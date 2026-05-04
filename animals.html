@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Наши животные</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ШАПКА -->
+<header class="header">
+    <div class="logo-block">
+        <img src="images/logo.png" alt="Лого" class="logo-img">
+        <div class="logo-text">
+            Хвостатый <span class="highlight">рай</span>
+        </div>
+    </div>
+
+    <nav class="menu">
+        <a href="index.html">Главная</a>
+        <a href="about.html">О приюте</a>
+        <a href="animals.html" class="active">Животные</a>
+        <a href="#">Как помочь</a>
+        <a href="#">Контакты</a>
+    </nav>
+
+    <a href="animals.html" class="btn">Приютить питомца</a>
+</header>
+
+<div class="search">
+    <input type="text" id="searchInput" placeholder="Введите имя питомца...">
+    <button class="btn-search" onclick="searchAnimal()">Найти</button>
+    <button class="btn-reset" onclick="resetSearch()">Сброс</button>
+</div>    
+
+<div class="filters">
+    <button class="active" onclick="setTypeFilter('all', this)">Все животные</button>
+    <button onclick="setTypeFilter('dog', this)">Собаки</button>
+    <button onclick="setTypeFilter('cat', this)">Кошки</button>
+</div>
+
+<div class="age-filter">
+    <h4>Возраст</h4>
+
+    <div class="age-values">
+        <span id="minAgeLabel">1</span> - 
+        <span id="maxAgeLabel">5</span> лет
+    </div>
+
+    <div class="range-wrapper">
+    <input type="range" id="minAge" min="1" max="5" value="1">
+    <input type="range" id="maxAge" min="1" max="5" value="5">
+
+    <div class="scale">
+        <span>1</span>
+        <span>2</span>
+        <span>3</span>
+        <span>4</span>
+        <span>5</span>
+    </div>
+</div>
+</div>
+
+<section class="animals-list">
+    <h2>Наши животные</h2>
+
+    <div class="card horizontal" data-type="dog">
+        <img src="images/dog1.jpg" alt="Рекс">
+        <div class="card-info">
+            <h3>Рекс</h3>
+            <p>3 года</p>
+            <p>Характер: Очень умный и наблюдательный. Быстро понимает настроение человека и старается не навязываться.</p>
+            <div class="btn secondary" onclick="openModal('Рекс', '3 года', 'История: Рекса нашли зимой возле дороги за городом. Он долго жил рядом с автосервисом, где его подкармливали рабочие. К людям он быстро привык, но сначала боялся резких движений.\n\nХарактер: Очень умный и наблюдательный. Быстро понимает настроение человека и старается не навязываться.\n\nПовадки:\n- любит долгие прогулки\n- спокойно идёт на поводке\n- обожает играть с мячом\n- настороженно относится к новым людям, но быстро привыкает', 'images/dog1.jpg')">Подробнее</div>
+            <a class="btn adopt" onclick="goAdopt('Рекс','3 года','images/dog1.jpg')">Приютить</a>
+        </div>
+    </div>
+
+    <div class="card horizontal" data-type="cat">
+        <img src="images/cat1.jpg" alt="Мурка">
+        <div class="card-info">
+            <h3>Мурка</h3>
+            <p>2 года</p>
+            <p>Характер: Спокойная, ласковая и осторожная. Сначала держится на расстоянии, но когда привыкает — становится очень нежной и привязывается к человеку.</p>
+            <div class="btn secondary"
+            onclick="openModal(
+            'Мурка',
+            '2 года',
+            'История: Мурку нашли котёнком у подъезда. Она была очень маленькая и слабая, пряталась под лестницей и боялась людей. Волонтёры забрали её в приют, выкормили и вылечили.\n\nХарактер: Спокойная, ласковая и осторожная. Сначала держится на расстоянии, но когда привыкает — становится очень нежной и привязывается к человеку.\n\nПовадки:\n- любит тёплые места и пледы\n- часто спит рядом с человеком\n- не любит громкие звуки\n- аккуратно играет и не выпускает когти',
+            'images/cat1.jpg'
+            )">Подробнее
+            </div>
+            <a class="btn adopt" onclick="goAdopt('Мурка','2 года','images/cat1.jpg')">Приютить</a>
+        </div>
+    </div>
+
+    <div class="card horizontal" data-type="dog">
+        <img src="images/dog2.jpg" alt="Тедди">
+        <div class="card-info">
+            <h3>Тедди</h3>
+            <p>5 лет</p>
+            <p>Характер: Очень умный, быстро учится командам и отлично понимает человека. Добрый, спокойный и невероятно ласковый. Любит внимание, но не навязывается.</p>
+            <div class="btn secondary"
+            onclick="openModal(
+            'Тедди',
+            '5 лет',
+            'История: Тедди сначала жил в семье и казался по-настоящему счастливым. Его очень любили, но через некоторое время выяснилось, что у ребёнка в семье сильная аллергия на шерсть. С тяжёлым сердцем хозяева приняли решение передать Тедди в приют. Он быстро привык к людям и не потерял доверия, но до сих пор немного ждёт, что за ним вернутся.\n\nХарактер: Очень умный, быстро учится командам и отлично понимает человека. Добрый, спокойный и невероятно ласковый. Любит внимание, но не навязывается.\n\nПовадки:\n- обожает вкусно поесть\n- быстро запоминает команды и с удовольствием их выполняет\n- любит лежать рядом с человеком\n- очень пушистый и радуется, когда его расчёсывают\n\n',
+            'images/dog2.jpg'
+            )">
+            Подробнее
+            </div>
+            <a class="btn adopt" onclick="goAdopt('Тедди','5 лет','images/dog2.jpg')">Приютить</a>
+        </div>
+    </div>
+
+    <div class="card horizontal" data-type="cat">
+        <img src="images/cat2.jpg" alt="Чарли">
+        <div class="card-info">
+            <h3>Чарли</h3>
+            <p>4 года</p>
+            <p>Характер: Умный, спокойный и немного гордый. Любит наблюдать за происходящим со стороны и не спешит сразу доверять новым людям. Но если привыкает — становится очень верным и ласковым.</p>
+            <div class="btn secondary"
+            onclick="openModal(
+            'Чарли',
+            '4 года',
+            'История: Чарли жил рядом с небольшим кафе, где его подкармливали сотрудники и гости. Он всегда держался рядом с людьми, но при этом оставался самостоятельным и немного независимым. Со временем кафе закрылось, и Чарли оказался в приюте, где быстро привык к новому месту.\n\nХарактер: Умный, спокойный и немного гордый. Любит наблюдать за происходящим со стороны и не спешит сразу доверять новым людям. Но если привыкает — становится очень верным и ласковым.\n\nПовадки:\n- любит сидеть на возвышенностях и наблюдать за всем вокруг\n- сам выбирает момент для общения\n- аккуратно играет и не царапается\n- быстро ориентируется в новом месте\n\n',
+            'images/cat2.jpg'
+            )">
+            Подробнее
+            </div>
+            <a class="btn adopt" onclick="goAdopt('Чарли','4 года','images/cat2.jpg')">Приютить</a>
+        </div>
+    </div>
+
+    <div class="card horizontal" data-type="cat">
+        <img src="images/cat3.jpg" alt="Барсик">
+        <div class="card-info">
+            <h3>Барсик</h3>
+            <p>3 года</p>
+            <p>Характер: Самостоятельный и уравновешенный. Не любит суеты и резких движений. Предпочитает сначала понаблюдать, а уже потом идти на контакт. Уверенный в себе и немного хитрый.</p>
+            <div class="btn secondary"
+            onclick="openModal(
+            'Барсик',
+            '3 года',
+            'История: Барсик долго жил во дворе жилого комплекса. Он не подходил близко к людям, но всегда наблюдал со стороны и выбирал безопасные места. Со временем привык к постоянному окружению и научился находить себе уютные уголки.\n\nХарактер: Самостоятельный и уравновешенный. Не любит суеты и резких движений. Предпочитает сначала понаблюдать, а уже потом идти на контакт. Уверенный в себе и немного хитрый.\n\nПовадки:\n- любит наблюдать за происходящим из укромных мест\n- выбирает, когда подходить к человеку\n- спокойно остаётся один\n- аккуратно исследует новое пространство\n\n',
+            'images/cat3.jpg'
+            )">
+            Подробнее
+            </div>
+            <a class="btn adopt" onclick="goAdopt('Барсик','3 года','images/cat3.jpg')">Приютить</a>
+        </div>
+    </div>
+    
+    <div class="card horizontal" data-type="dog">
+        <img src="images/dog3.jpg" alt="Гром">
+        <div class="card-info">
+            <h3>Гром</h3>
+            <p>5 лет</p>
+            <p>Характер: Осторожный и выносливый пёс. Не сразу доверяет, но отлично чувствует обстановку. Спокойный, но в нужный момент становится очень собранным и внимательным.</p>
+            <div class="btn secondary"
+            onclick="openModal(
+            'Гром',
+            '4 года',
+            'История: Гром жил на окраине города рядом с промышленной зоной. Он привык рассчитывать только на себя, находил укрытия и держался подальше от шумных мест. Со временем начал подпускать людей, которые его подкармливали, и постепенно оказался в приюте.\n\nХарактер: Осторожный и наблюдательный. Не любит суету и резкие движения. Сначала держит дистанцию, но со временем начинает доверять и становится спокойным и надёжным.\n\nПовадки:\n- внимательно следит за окружением\n- любит гулять в спокойных местах\n- не реагирует на лишний шум\n- быстро запоминает маршрут прогулки\n\n',
+            'images/dog3.jpg'
+            )">
+            Подробнее
+            </div>
+            <a class="btn adopt" onclick="goAdopt('Гром','5 лет','images/dog3.jpg')">Приютить</a>
+        </div>
+    </div>
+
+    <div class="card horizontal" data-type="dog">
+        <img src="images/dog4.jpeg" alt="Луна">
+        <div class="card-info">
+            <h3>Луна</h3>
+            <p>2 года</p>
+            <p>Характер: Спокойная и немного настороженная собака. Аккуратная, тихая, любит порядок и не любит излишнюю активность вокруг.</p>
+            <div class="btn secondary"
+            onclick="openModal(
+            'Луна',
+            '2 года',
+            'История: Луну нашли на окраине города с ошейником. Она была ухоженной, не похожей на уличную собаку, но хозяев так и не удалось найти. Её долго искали по объявлениям и соцсетям, но никто не откликнулся, и она оказалась в приюте.\n\nХарактер: Спокойная и деликатная собака. Ведёт себя аккуратно, не проявляет агрессии. Сначала может быть настороженной, но быстро понимает, что ей ничего не угрожает.\n\nПовадки:\n- любит тихие прогулки без шума\n- аккуратно берёт еду и не торопится\n- наблюдает за людьми со стороны\n- предпочитает спокойную обстановку\n\n',
+            'images/dog4.jpeg'
+            )">
+            Подробнее
+            </div>
+            <a class="btn adopt" onclick="goAdopt('Луна','2 года','images/dog4.jpeg')">Приютить</a>
+        </div>
+    </div>
+</section>
+
+<!-- ФУТЕР -->
+<footer class="footer">
+    <div>
+        <h3>Хвостатый рай</h3>
+        <p>Приют для животных</p>
+    </div>
+
+    <div>
+        <p>Контакты:</p>
+        <p>+7 999 123-45-67</p>
+    </div>
+
+    <div>
+        <p>© 2026 Все права защищены</p>
+    </div>
+</footer>
+
+<!-- МОДАЛЬНОЕ ОКНО -->
+<div class="modal" id="animalModal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+
+        <img id="modal-img" src="" alt="">
+
+        <div class="modal-text">
+            <h2 id="modal-title"></h2>
+            <p id="modal-age"></p>
+            <p id="modal-desc"></p>
+
+            <a id="adoptBtn" class="btn">Приютить</a>
+        </div>
+    </div>
+</div>
+
+<script>
+let currentType = "all";
+
+let minAge = 1;
+let maxAge = 5;
+
+/* ---------- ФИЛЬТР ТИПА ---------- */
+function setTypeFilter(type, btn) {
+    currentType = type;
+
+    document.querySelectorAll(".filters button")
+        .forEach(b => b.classList.remove("active"));
+
+    btn.classList.add("active");
+
+    filterAnimals();
+}
+
+/* ---------- ПОИСК ---------- */
+function searchAnimal() {
+    filterAnimals();
+}
+
+/* ---------- СБРОС ---------- */
+function resetSearch() {
+    document.getElementById("searchInput").value = "";
+
+    currentType = "all";
+    minAge = 1;
+    maxAge = 5;
+
+    document.getElementById("minAge").value = 1;
+    document.getElementById("maxAge").value = 5;
+
+    document.getElementById("minAgeLabel").innerText = 1;
+    document.getElementById("maxAgeLabel").innerText = 5;
+
+    // убираем active у всех кнопок
+    document.querySelectorAll(".filters button")
+        .forEach(b => b.classList.remove("active"));
+
+    // ставим active на "Все животные"
+    document.querySelector(".filters button")
+        .classList.add("active");
+
+    filterAnimals();
+}
+
+/* ---------- AGE SLIDERS ---------- */
+document.addEventListener("DOMContentLoaded", function () {
+
+    document.getElementById("minAge").oninput = function () {
+        minAge = parseInt(this.value);
+        document.getElementById("minAgeLabel").innerText = minAge;
+        filterAnimals();
+    };
+
+    document.getElementById("maxAge").oninput = function () {
+        maxAge = parseInt(this.value);
+        document.getElementById("maxAgeLabel").innerText = maxAge;
+        filterAnimals();
+    };
+
+});
+
+/* ---------- ОСНОВНОЙ ФИЛЬТР ---------- */
+function filterAnimals() {
+    let input = document.getElementById("searchInput").value.toLowerCase();
+    let cards = document.querySelectorAll(".card");
+
+    cards.forEach(card => {
+
+        let nameEl = card.querySelector("h3");
+        let ageEl = card.querySelectorAll("p")[0];
+
+        let name = nameEl ? nameEl.innerText.toLowerCase() : "";
+        let age = ageEl ? parseInt(ageEl.innerText) : 0;
+
+        let type = card.getAttribute("data-type");
+
+        let matchName = name.includes(input);
+        let matchType = (currentType === "all" || type === currentType);
+        let matchAge = age >= minAge && age <= maxAge;
+
+        if (matchName && matchType && matchAge) {
+            card.style.display = "flex";
+        } else {
+            card.style.display = "none";
+        }
+    });
+}
+</script>
+
+<script>
+function openModal(name, age, desc, img) {
+    document.getElementById("animalModal").classList.add("active");
+
+    document.getElementById("modal-title").innerText = name;
+    document.getElementById("modal-age").innerText = age;
+    document.getElementById("modal-desc").innerText = desc;
+    document.getElementById("modal-img").src = img;
+
+    document.getElementById("adoptBtn").href = 
+    `adopt.html?name=${name}&age=${age}&img=${img}`;
+}
+
+document.querySelector(".close").onclick = function() {
+    document.getElementById("animalModal").classList.remove("active");
+}
+
+function goAdopt(name, age, img) {
+    window.location.href =
+        `adopt.html?name=${name}&age=${age}&img=${img}`;
+}
+
+window.onclick = function(event) {
+    let modal = document.getElementById("animalModal");
+    if (event.target == modal) {
+        modal.classList.remove("active");
+    }
+}
+</script>
+
+</body>
+</html>
