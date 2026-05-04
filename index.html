@@ -103,11 +103,92 @@
             Подробнее
             </div>
         </div>
-
-
     </div>
 </section>
 
+<section class="success">
+    <h2>Счастливые истории</h2>
+
+    <div class="slider">
+
+    <button class="arrow left" onclick="moveSlide(-1)">&#10094;</button>
+
+    <div class="slider-window">
+        <div class="slider-track" id="track">
+
+    <!-- 1 -->
+    <div class="story-card">
+        <div class="card-inner">
+            <img src="images/dog_story1.jpg">
+            <div>
+                <h3>Бруно</h3>
+                <p>Его заметили у продуктового магазина. Сейчас он живёт в семье и каждый день гуляет в парке.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2 -->
+    <div class="story-card">
+        <div class="card-inner">
+            <img src="images/cat_story1.jpg">
+            <div>
+                <h3>Софи</h3>
+                <p>Софи живёт у девушки-студентки и спит только на её подушке.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3 -->
+    <div class="story-card">
+        <div class="card-inner">
+            <img src="images/dog_story2.jpg">
+            <div>
+                <h3>Рой</h3>
+                <p>Рой стал семейной собакой и каждый день встречает детей из школы.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 4 -->
+    <div class="story-card">
+        <div class="card-inner">
+            <img src="images/dog_story3.jpg">
+            <div>
+                <h3>Оскар</h3>
+                <p>Оскар теперь живёт в доме с садом и стал очень спокойным псом.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 5 -->
+    <div class="story-card">
+        <div class="card-inner">
+            <img src="images/cat_story2.jpg">
+            <div>
+                <h3>Феликс</h3>
+                <p>Феликс нашел спокойный дом и больше не боится людей.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 6 -->
+    <div class="story-card">
+        <div class="card-inner">
+            <img src="images/cat_story3.jpg">
+            <div>
+                <h3>Бублик</h3>
+                <p>Бублик нашёл дом, где его энергию только поддерживают — теперь он постоянно в движении.</p>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <button class="arrow right" onclick="moveSlide(1)">&#10095;</button>
+
+    <div class="slider-mask"></div>
+
+</div>
+</section>
 
 <!-- ФУТЕР -->
 <footer class="footer">
@@ -165,6 +246,23 @@ window.onclick = function(event) {
     if (event.target == modal) {
         modal.classList.remove("active");
     }
+}
+
+let index = 0;
+
+function moveSlide(dir) {
+    const track = document.getElementById("track");
+    const total = track.children.length;
+
+    const visible = 3; // показываем 3 карточки
+    const maxIndex = total - visible;
+
+    index += dir;
+
+    if (index < 0) index = 0;
+    if (index > maxIndex) index = maxIndex;
+
+    track.style.transform = `translateX(${-index * 33.33}%)`;
 }
 </script>
 

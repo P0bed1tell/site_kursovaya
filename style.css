@@ -267,6 +267,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
 .card img {
@@ -295,6 +296,7 @@ body {
     background: white;
     padding: 15px;
     border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
 .card.horizontal img {
@@ -433,6 +435,7 @@ body {
     padding: 20px;
     border-radius: 15px;
     display: inline-block;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
 .form input {
@@ -476,4 +479,99 @@ body {
 
 .menu a.active {
     color: #FF9800;
+}
+
+.success {
+    padding: 40px;
+}
+
+.slider {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    position: relative;
+    overflow: visible;
+}
+
+.slider-mask {
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    width: 40px;   /* ровно как стрелка */
+    height: 100%;
+
+    background: #F9F9F9;
+    z-index: 5;
+    pointer-events: none;
+}
+
+/* стрелки */
+.arrow {
+    width: 40px;
+    height: 40px;
+    flex: 0 0 40px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #FF9800;
+    border: none;
+    color: white;
+    font-size: 25px;
+
+    border-radius: 50%;
+    cursor: pointer;
+
+    margin: 0;
+    position: relative;
+    z-index: 10;  
+}
+
+/* окно */
+.slider-window {
+    flex: 1;
+    overflow: hidden;
+    min-width: 0;
+
+    display: flex;
+    align-items: center;
+
+    padding: 0 10px;
+    box-sizing: border-box;
+}
+
+/* лента */
+.slider-track {
+    display: flex;
+    transition: transform 0.5s ease;
+    margin: 0;
+}
+
+/* карточка */
+.story-card {
+    flex: 0 0 calc(100% / 3);
+    box-sizing: border-box;
+    padding: 0 10px;
+}
+
+/* внутренняя карточка */
+.card-inner {
+    background: white;
+    border-radius: 15px;
+    padding: 15px;
+
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+/* картинка */
+.card-inner img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 10px;
 }
